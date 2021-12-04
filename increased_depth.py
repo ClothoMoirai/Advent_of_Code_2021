@@ -12,6 +12,7 @@ def clean_depths(depths_list_dirty: list) -> list:
 def get_depths(depths_filename: str) -> list:
     with open(depths_filename,'r') as depthsfile:
         depths_list = depthsfile.readlines()
+    depthsfile.close()
     return clean_depths(depths_list)
 
 

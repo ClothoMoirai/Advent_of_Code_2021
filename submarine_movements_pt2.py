@@ -23,6 +23,7 @@ def compute_moves(movements_list: list):
 def get_moves(movement_filename: str) -> list:
     with open(movement_filename, 'r') as movements_file:
         movements_list = movements_file.readlines()
+    movements_file.close()
     return movements_list
 
 
