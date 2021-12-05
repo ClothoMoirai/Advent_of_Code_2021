@@ -26,10 +26,10 @@ def get_max_xy(ventlines: dict) -> dict:
 
 
 def process_ventlines(ventinput: list) -> dict:
-    ventlines_processed = {'max': [0,0], 'lines': []}
+    ventlines_processed = {'max': [0, 0], 'lines': []}
     for thisline in ventinput:
         ventlines_tmp = []
-        for i in re.sub(' ->','',thisline).split():
+        for i in re.sub(' ->', '', thisline).split():
             ventlines_tmp.append([int(x) for x in i.split(',')])
         ventlines_processed['lines'].append(ventlines_tmp)
     return get_max_xy(ventlines_processed)
@@ -43,7 +43,7 @@ def generate_grid(ventlines: dict) -> dict:
     return ventlines
 
 
-def plotlines(ventlines:dict) -> dict:
+def plotlines(ventlines: dict) -> dict:
     for thisline in ventlines['lines']:
         currentx, currenty = thisline[0]
         targetx, targety = thisline[1]
@@ -64,7 +64,7 @@ def plotlines(ventlines:dict) -> dict:
             diffy = -1
             targety -= 1
         else:
-            diffy=0
+            diffy = 0
         if diffx:
             for thisx in range(currentx, targetx, diffx):
                 ventlines['grid'][thisx][currenty] += 1
@@ -82,11 +82,13 @@ def count_overlaps(ventgrid: dict) -> int:
                 overlap_count += 1
     return overlap_count
 
+
 def main():
     ventlines = get_input('day_5.txt')
     ventlines = process_ventlines(ventlines)
     ventlines = generate_grid(ventlines)
     ventlines = plotlines(ventlines)
     print(count_overlaps(ventlines['grid']))
+
 
 main()
