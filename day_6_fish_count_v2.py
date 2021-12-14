@@ -16,7 +16,7 @@ def compute_generations(fishlist: list, days: int) -> list:
         birthing = fishlist.pop(0)
         fishlist.append(birthing)
         fishlist[6] += birthing
-    return fishlist
+    return fishlist 
 
 
 def process_input(fishinput: list,) -> list:
